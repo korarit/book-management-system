@@ -48,7 +48,7 @@ async function add_book(){
 
     const year = await input({ 
         message: 'Enter year of book', 
-        validate: value => (value === '' || isNaN(value)) ? 'Please enter number of year' : (parseInt(value) < 0 ? 'Year must be positive year' : true)
+        validate: value => (value === '' || isNaN(value) || value.includes('.')) ? 'Please enter number of year' : (parseInt(value) < 0 ? 'Year must be positive year' : true)
     });
 
     const price = await input({ 
@@ -117,7 +117,7 @@ async function edit_book(){
     const year = await input({ 
         message: 'Enter year of book',
         default : book_database[parseInt(book_select)].year,
-        validate: value => (value === '' || isNaN(value)) ? 'Please enter number of year' : (parseInt(value) < 0 ? 'Year must be positive year' : true)
+        validate: value => (value === '' || isNaN(value) || value.includes('.')) ? 'Please enter number of year' : (parseInt(value) < 0 ? 'Year must be positive year' : true)
     });
     
     const price = await input({ 
